@@ -21,16 +21,15 @@ end
 if (row==col)
     disp('The matrix is square')
 else
-    error('The operation is not possible');
+    error('The operation is not possible since matrix entered is not square.');
 end 
 
 %% Verifying the vector to be one dimensional and dimensional compatible with matrix:-
 [row_vect,col_vect] = size(b);
-if row_vect ~= row && col_vect ~= 1
-    disp("The vector is invalid!")
-    return
-else 
+if row_vect == row && col_vect == 1
     disp("The vector is unidimensional.")
+else 
+    error("The vector entered is invalid!")
 end
 
 %% Checking if all the values inside the matrix are real numbers
@@ -64,11 +63,15 @@ for i = 1:row
         if i>j && element~=0
             disp("U is not upper triangular matrix")
             return
+        end
+        % Checking if any diagonal element is zero.
+        if i==j && element==0
+            disp("Determinant of upper triangular matrix is zero.")
+            return
         % Checking for IDENTITY Matrix.
         elseif j>i && element ==0
             if U(i,i) == 1
                 disp("U is input as Identity matrix!")
-                return
             end
         end  
     end

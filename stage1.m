@@ -21,22 +21,22 @@ end
 if (row==col)
     disp('The matrix is square')
 else
-    error('The operation is not possible');
+    error('The operation is not possible since matrix is not square.');
 end 
 
 %% Verifying the vector to be one dimensional and dimensional compatible with matrix:-
 [row_vect,col_vect] = size(b);
-if row_vect ~= row && col_vect ~= 1
-    disp("The vector is invalid!")
-    return
-else 
+if row_vect == row && col_vect == 1
     disp("The vector is unidimensional.")
+else 
+    error('The vector entered is invalid!')
 end
 
 %% Checking if all the values inside the matrix are real numbers
 for i = 1:row
     for j = 1:row
         number = L(i,j);
+        disp(number);
         tf = isreal(number);
         if tf == false 
             disp("The lower traingular matrix is invalid!")
@@ -61,12 +61,7 @@ for j = 1:row
     val_note = L(j,j);
     if val_note == 0
         disp("The determinant of given matrix is zero, please input valid L")
-        x = null;
         return ;
-    elseif val_note ~= 1
-        disp("The matrix L entered doesn't have valid diagonal.")
-        x = null;
-        return;
     end
 end
 
@@ -75,22 +70,23 @@ end
 % zero.
 for i = 1:row
     for j = 1:row
-    element = L(i,j);
+        element = L(i,j);
         if j>i && element~=0
             disp("L is not lower triangular matrix")
             return
         % Checking for IDENTITY Matrix.
         elseif i>j && element ==0
-            disp("L is input as Identity matrix!")
-            return
-        end  
+            if i==j && element==1
+                disp("L is input as Identity matrix!")
+            end
+        end
     end
 end
 % After all the checks being done:-
 disp("L is lower triangular matrix.")
 
 %% Performing the final operation:-
-disp("The solution vector through forward substitution is:-")
+disp("The solution vector through forward substitution is:-");
 n = length(b);
 x(1,1) = b(1)/L(1,1);
 for i = 2:n

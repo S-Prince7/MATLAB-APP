@@ -7,7 +7,7 @@ function [L,U] = stage3(A)
 
 % Made by Shivang Chaudhary.
 
-%% Checking if arrays are entered correctly for variables U and b. 
+%% Checking if arrays are entered correctly for A. 
 TF = isnumeric(A);
 if TF == 0
     disp("Please enter correct data type, i.e. only a matrix!")
@@ -20,7 +20,7 @@ end
 if (row==col)
     disp('The matrix is square')
 else
-    error('The operation is not possible');
+    error('The operation is not possible since matrix entered is not square.');
 end 
 
 %% Checking if all the values inside the matrix are real numbers
@@ -61,7 +61,6 @@ end
 
 if z == row*col
     disp("The matrix entered is Identity matrix")
-    return
 end
 
 %% Checking if determinant is zero
@@ -88,9 +87,8 @@ for i = 1:row
                 
                 if val_check == row % If 2 rows of given 
                     % matrix are same:
-                    disp("The determinant of given matrix is zero! " + ...
-                        "Since two rows of the matrix are same.")
-                    return
+                    error("The determinant of given matrix is zero! " + ...
+                        "Since two rows of the matrix are same.")                    
                 end
             end
         end

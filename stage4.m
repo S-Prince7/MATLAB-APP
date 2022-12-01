@@ -13,11 +13,18 @@ function [x] = stage4(A,b)
 % - with matrix:-
 [row_vect,col_vect] = size(b);
 [row,col] = size(A);
-if row_vect ~= row && col_vect ~= 1
-    disp("The vector is invalid!")
-    return
-else 
+% Verifying Matrix
+if row==col
+    disp("The matrix is valid.")
+else
+    error('The matrix entered is invalid!')
+    return;
+end
+% Verifying vector
+if row_vect == row && col_vect == 1
     disp("The vector is unidimensional.")
+else 
+    error("The vector entered is invalid!")
 end
 
 %% Checking if all elements of vector are real:-
@@ -26,8 +33,7 @@ for i = 1:row_vect
     num = b(i,col_vect);
     tf = isreal(num);
     if tf == false
-        disp("The vector is invalid!")
-        return
+        error("The vector is invalid!")
     end
 end
 
@@ -54,12 +60,10 @@ end
 
 % If either of the determinant is zero, there is no solution vector.
 if determinant_upper == 0
-    disp("The solution vector does not exist.")
-    return;
+    error("The solution vector does not exist since determinant of upper-triangular matrix is zero.")
 end
 if determinant_lower == 0
-    disp("The solution vector does not exist.")
-    return;
+    error("The solution vector does not exist since determinant of lower-triangular matrix is zero.")
 end
 
 %% Finding the solution vector at last after all the initial process.
@@ -72,7 +76,7 @@ end
 % dimensional compatibility.
 
 % First calculating 'y' through forward substituion:-
-y = stage1(L,b)
+y = stage1(L,b);
 
 % Now using backward substituion , we calculate 'x':-
-x = stage2(U,y)
+x = stage2(U,y);
