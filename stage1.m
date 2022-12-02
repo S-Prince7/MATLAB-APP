@@ -36,7 +36,6 @@ end
 for i = 1:row
     for j = 1:row
         number = L(i,j);
-        disp(number);
         tf = isreal(number);
         if tf == false 
             disp("The lower traingular matrix is invalid!")
