@@ -7,8 +7,3 @@ The decomposition is represented as:
 \[
 A = L \cdot U
 \]
-
-The decomposition is represented as:
-\[
-A = L \times U
-\]
