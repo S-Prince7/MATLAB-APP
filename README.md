@@ -9,3 +9,5 @@ A = L \cdot U
 \]
 ## Robust Function Implementation
 Functions are designed to be robust, ensuring they handle invalid inputs gracefully and avoid task-crashing. Input validation mechanisms are implemented to identify whether the provided inputs are valid before proceeding with further operations. This enhances reliability and user experience while minimizing runtime errors.
+
+Note: This repository is archived and is no longer actively maintained. It has been preserved to showcase the project and the skills demonstrated during its development.
